@@ -1,8 +1,7 @@
 #include <iostream>
 #include<string>
 #include"conio.h"
-#include "DeadPool.h"
-#include"Snake.h"
+#include "Stack_of_class_for_Game.h"
 #include<chrono>
 
 
@@ -11,6 +10,14 @@ void Game(DeadPool& pool, Snake& snake);
 void Arrow_Path(int& path_status);
 
    
+
+
+
+
+
+
+
+
 
     int main() {
        
@@ -25,9 +32,28 @@ void Arrow_Path(int& path_status);
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     void Game(DeadPool& pool, Snake& snake) {
         bool integer_for_move = 1;
         int path_status;
+
         pool.Set_snake(snake);
 
         pool.Pool_print();
@@ -44,6 +70,21 @@ void Arrow_Path(int& path_status);
 
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     void Arrow_Path(int & path_status) {
 

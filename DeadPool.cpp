@@ -1,7 +1,5 @@
-#include <iostream>
-#include "DeadPool.h"
-#include<thread>
-#include"conio.h"
+
+#include "Stack_of_class_for_Game.h"
 
 
     DeadPool::DeadPool(int weight , int lenght ) :pool_weight(weight), pool_lenght(lenght)
@@ -76,11 +74,37 @@
 
    }
 
+   int DeadPool::GetWeight(){
+       return pool_weight;
+   }
+  
+   
+   
+   int DeadPool:: GetLenght() {
+
+       return pool_lenght;
 
 
+   }
+
+  
 
 
+   Apple& DeadPool::Set_apple_position(Apple& apple) {
+       DeadPool poo;
+       Apple apple1(poo);
+       if (deadpool_W_L[apple.Get_apple_location_Y()][apple.Get_apple_location_X()]==' ') {
 
+           deadpool_W_L[apple.Get_apple_location_Y()][apple.Get_apple_location_X()] = apple.Get_obj_form();
+
+       }
+       else {
+           apple.~Apple();
+           
+            return apple1;
+       }
+       return apple1;
+   }
 
 
 
@@ -155,7 +179,7 @@
                past_path = arrow_path;
        Set_snake(snake);
 
-       std::this_thread::sleep_for(std::chrono::milliseconds(snake.snake_spead*500));
+       std::this_thread::sleep_for(std::chrono::milliseconds(snake.snake_spead*400));
      
             
       
