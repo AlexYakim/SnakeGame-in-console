@@ -2,15 +2,19 @@
 
 
 int getRandomNumber(int min, int max);
+
+
+
 Apple::Apple(DeadPool& pool) {
 
 
     apple_obj_form = apple_form[getRandomNumber(0,8)];
 
-    apple_location_X = getRandomNumber(1, pool.GetLenght());
-    apple_location_Y = getRandomNumber(1, pool.GetWeight());
+   /* apple_location_X = getRandomNumber(1, pool.GetLenght());
+    apple_location_Y = getRandomNumber(1, pool.GetWeight());*/
 
-    
+    apple_location_X = 1;
+    apple_location_Y = 1;
 
 }
 Apple::~Apple(){}

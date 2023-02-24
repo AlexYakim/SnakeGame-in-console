@@ -4,6 +4,8 @@
 #include <iostream>
 #include<thread>
 #include"conio.h"
+#include<vector>
+
 
 class Apple;
 class DeadPool;
@@ -15,7 +17,7 @@ class DeadPool {
 public:
 
 
-   Apple& Set_apple_position (Apple& apple);
+   Apple& Set_apple_position (Apple& apple, DeadPool& pool);
 
     int GetWeight();
     int GetLenght();
@@ -27,7 +29,7 @@ public:
 
     void Pool_set();
 
-    bool Pool_move(Snake& snake, int& arrow_path); 
+    bool Pool_move(Snake& snake, int& arrow_path, Apple& apple);
 
     void Set_snake(Snake& snake); 
 private:
@@ -43,16 +45,34 @@ private:
     };
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Snake {
 
 public:
 
-    int snake_lenght;
+    std::vector<int> snake_lenght;
 
 
     int snake_spead;
-    int snake_positionX = 1;
-    int snake_positionY = 1;
+
+
+    std::vector<int> snake_positionX = { 1 };
+    std::vector<int> snake_positionY = { 1 };
+
+
 
     void Snake_lenght_resize();
 
@@ -64,6 +84,17 @@ public:
     friend DeadPool;
 
 };
+
+
+
+
+
+
+
+
+
+
+
 
 
 class Apple {

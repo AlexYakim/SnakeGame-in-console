@@ -59,6 +59,12 @@
 
 
     }
+
+
+
+
+
+
    DeadPool:: ~DeadPool() {
 
         for (int i = 0; i < pool_weight; i++) {
@@ -68,11 +74,44 @@
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
    void DeadPool:: Set_snake(Snake& snake) {
+       
+           
+       for (auto size: snake.snake_lenght) {
 
-       deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = '*';
 
+           deadpool_W_L[snake.snake_positionY[size]][snake.snake_positionX[size]] = '*';
+                      
+       
+       
+       }
+       
    }
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    int DeadPool::GetWeight(){
        return pool_weight;
@@ -90,9 +129,8 @@
   
 
 
-   Apple& DeadPool::Set_apple_position(Apple& apple) {
-       DeadPool poo;
-       Apple apple1(poo);
+   Apple& DeadPool::Set_apple_position(Apple& apple, DeadPool& pool) {
+       
        if (deadpool_W_L[apple.Get_apple_location_Y()][apple.Get_apple_location_X()]==' ') {
 
            deadpool_W_L[apple.Get_apple_location_Y()][apple.Get_apple_location_X()] = apple.Get_obj_form();
@@ -100,89 +138,100 @@
        }
        else {
            apple.~Apple();
-           
+          
+           Apple apple1(pool);
             return apple1;
        }
-       return apple1;
+      
    }
 
 
 
 
 
-   bool DeadPool:: Pool_move(Snake& snake, int& arrow_path) {
+   bool DeadPool:: Pool_move(Snake& snake, int& arrow_path, Apple& apple) {
 
-       if (snake.snake_positionY == pool_weight - 1 ||snake.snake_positionY == 0 ||snake.snake_positionX == pool_lenght - 1|| snake.snake_positionX == 0) {
-           deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = '@';
+       if (snake.snake_positionY.back() == pool_weight - 1 || snake.snake_positionY.back() == 0 || snake.snake_positionX.back() == pool_lenght - 1 || snake.snake_positionX.back() == 0) {
+           deadpool_W_L[snake.snake_positionY.back()][snake.snake_positionX.back()] = '@';
            return false;
 
        }
-
-      
+       
+     
      
                switch (arrow_path)
                {
+
                case 72:  // Up arrow
                    if (past_path == 80) { 
                        arrow_path = 80; 
-                   deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = ' ';
-                   snake.snake_positionY += 1;
+                   deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                   snake.snake_positionY.back() += 1;
                    break;
                    }
                    else {
-                       deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = ' ';
-                       snake.snake_positionY -= 1;
+                       deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                       snake.snake_positionY.back() -= 1;
 
                        break;
                    }
                case 80:  // Down arrow
                    if (past_path == 72) { 
                        arrow_path = 72;
-                   deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = ' ';
-                   snake.snake_positionY -= 1;
+                   deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                   snake.snake_positionY.back() -= 1;
                    break;
                    }
                    else {
-                       deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = ' ';
-                       snake.snake_positionY += 1;
+                       deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                       snake.snake_positionY.back() += 1;
 
                        break;
                    }
                case 77:  // Right arrow
                    if (past_path == 75) { 
                        arrow_path = 75; 
-                   deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = ' ';
-                   snake.snake_positionX -= 1;
+                   deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                   snake.snake_positionX.back() -= 1;
                    break;
                    }
                    else {
-                       deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = ' ';
-                       snake.snake_positionX += 1;
+                       deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                       snake.snake_positionX.back() += 1;
 
                        break;
                    }
                case 75:  // Left arrow
                    if (past_path == 77) { 
                        arrow_path = 77; 
-                   deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = ' ';
-                   snake.snake_positionX += 1;
+                   deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                   snake.snake_positionX.back() += 1;
                    break;
                    }
                    else {
-                       deadpool_W_L[snake.snake_positionY][snake.snake_positionX] = ' ';
-                       snake.snake_positionX -= 1;
+                       deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                       snake.snake_positionX.back() -= 1;
 
                        break;
                    }
                }
-         
-               past_path = arrow_path;
+       past_path = arrow_path;
+
+       if (snake.snake_positionX.back() == apple.apple_location_X && snake.snake_positionY.back() == apple.apple_location_Y) {
+
+           snake.Snake_lenght_resize();
+           apple.~Apple();
+
+
+       }
+       
+
        Set_snake(snake);
 
-       std::this_thread::sleep_for(std::chrono::milliseconds(snake.snake_spead*400));
-     
-            
       
+            
+       std::this_thread::sleep_for(std::chrono::milliseconds(snake.snake_spead * 400));
+
        return true;
    }
 

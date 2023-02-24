@@ -1,12 +1,10 @@
-#include <iostream>
 #include<string>
-#include"conio.h"
 #include "Stack_of_class_for_Game.h"
 #include<chrono>
 
 
 
-void Game(DeadPool& pool, Snake& snake);
+void Game(DeadPool& pool, Snake& snake,Apple& apple);
 void Arrow_Path(int& path_status);
 
    
@@ -23,9 +21,9 @@ void Arrow_Path(int& path_status);
        
         DeadPool pool(15,20);
         pool.Pool_set();
-               
+        Apple apple(pool);
         Snake snake1(1);
-        Game(pool, snake1);
+        Game(pool, snake1, apple);
        
       
         return 0;
@@ -50,23 +48,23 @@ void Arrow_Path(int& path_status);
 
 
 
-    void Game(DeadPool& pool, Snake& snake) {
+    void Game(DeadPool& pool, Snake& snake, Apple& apple) {
         bool integer_for_move = 1;
         int path_status;
 
         pool.Set_snake(snake);
 
         pool.Pool_print();
-        
+        pool.Set_apple_position(apple,pool);
         
 
         while (integer_for_move) {
              Arrow_Path(path_status);
          
 
-            integer_for_move = pool.Pool_move(snake, path_status);
+            integer_for_move = pool.Pool_move(snake, path_status,apple);
          
-           pool.Pool_print();
+          // pool.Pool_print();
 
         }
     }
@@ -96,6 +94,6 @@ void Arrow_Path(int& path_status);
             }
 
         }
-
+        path_status = 77;
 
     }
