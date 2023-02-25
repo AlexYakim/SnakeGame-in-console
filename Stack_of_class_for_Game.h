@@ -63,7 +63,7 @@ class Snake {
 
 public:
 
-    std::vector<int> snake_lenght;
+    int snake_lenght;
 
 
     int snake_spead;
@@ -74,7 +74,7 @@ public:
 
 
 
-    void Snake_lenght_resize();
+    void Snake_lenght_resize(int arrow);
 
 
 

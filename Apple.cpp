@@ -10,6 +10,7 @@ Apple::Apple(DeadPool& pool) {
 
     apple_obj_form = apple_form[getRandomNumber(0,8)];
 
+
    apple_location_X = getRandomNumber(1, pool.GetLenght());
     apple_location_Y = getRandomNumber(1, pool.GetWeight());
 

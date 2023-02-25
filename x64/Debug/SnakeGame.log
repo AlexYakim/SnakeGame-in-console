@@ -1,4 +1,2 @@
-﻿  DeadPool.cpp
-E:\ProgC++\SnakeGame\DeadPool.cpp(146): warning C4715: DeadPool::Set_apple_position: значение возвращается не при всех путях выполнения
-E:\ProgC++\SnakeGame\DeadPool.cpp(143): warning C4172: возвращение адреса локальной или временной переменной : apple1
+﻿  Snake.cpp
   SnakeGame.vcxproj -> E:\ProgC++\SnakeGame\x64\Debug\SnakeGame.exe

@@ -88,7 +88,7 @@
    void DeadPool:: Set_snake(Snake& snake) {
        
            
-       for (auto size: snake.snake_lenght) {
+       for (auto size = 0; size < snake.snake_lenght;size++) {
 
 
            deadpool_W_L[snake.snake_positionY[size]][snake.snake_positionX[size]] = '*';
@@ -166,14 +166,14 @@
                    if (past_path == 80) { 
                        arrow_path = 80; 
                    deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                   for (auto size : snake.snake_lenght) {
+                   for (auto size = 0; size < snake.snake_lenght; size++) {
                        snake.snake_positionY[size] += 1;
                    }
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size : snake.snake_lenght) {
+                       for (auto size = 0; size < snake.snake_lenght; size++) {
                            snake.snake_positionY[size] -= 1;
                        }
                        break;
@@ -182,7 +182,7 @@
                    if (past_path == 72) {
                        arrow_path = 72;
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size : snake.snake_lenght) {
+                       for (auto size = 0; size < snake.snake_lenght; size++) {
                            snake.snake_positionY[size] -= 1;
                        }
                    
@@ -190,7 +190,7 @@
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size : snake.snake_lenght) {
+                       for (auto size = 0; size < snake.snake_lenght; size++) {
                            snake.snake_positionY[size] += 1;
                        }
 
@@ -200,14 +200,14 @@
                    if (past_path == 75) {
                        arrow_path = 75;
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size : snake.snake_lenght) {
+                       for (auto size = 0; size < snake.snake_lenght; size++) {
                        snake.snake_positionX[size] -= 1;
                    }
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size : snake.snake_lenght) {
+                       for (auto size = 0; size < snake.snake_lenght; size++) {
                            snake.snake_positionX[size] += 1;
                        }
                        break;
@@ -216,14 +216,14 @@
                    if (past_path == 77) { 
                        arrow_path = 77; 
                    deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                   for (auto size : snake.snake_lenght) {
+                   for (auto size = 0; size < snake.snake_lenght; size++) {
                        snake.snake_positionX[size] += 1;
                    }
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size : snake.snake_lenght) {
+                       for (auto size = 0; size < snake.snake_lenght; size++) {
                            snake.snake_positionX[size] -= 1;
                        }
                        break;
@@ -233,7 +233,9 @@
 
        if (snake.snake_positionX.back() == apple.apple_location_X && snake.snake_positionY.back() == apple.apple_location_Y) {
 
-           snake.Snake_lenght_resize();
+           
+           arrow_path == 75 ? snake.Snake_lenght_resize(75) : arrow_path == 77 ? snake.Snake_lenght_resize(77) : arrow_path == 72 ? snake.Snake_lenght_resize(72) : snake.Snake_lenght_resize(80);
+          // snake.Snake_lenght_resize();
            apple.~Apple();
 
 

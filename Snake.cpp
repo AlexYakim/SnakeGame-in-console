@@ -3,18 +3,34 @@
 
 
 
-void Snake::Snake_lenght_resize() {
+void Snake::Snake_lenght_resize(int arrow) {
 
-    snake_lenght.resize(snake_lenght.size() + 1);
+    snake_lenght += 1;
     
-    snake_positionX.resize(snake_positionX.size() + 1);
-    snake_positionY.resize(snake_positionY.size() + 1);
+    if (arrow == 72) {
+        snake_positionY.resize(snake_positionY.size() + 1, (snake_positionY.back() - 1));
+        snake_positionX.resize(snake_positionX.size() + 1, (snake_positionX.back()));
+    }
+    else if (arrow == 80) {
+        snake_positionY.resize(snake_positionY.size() + 1, (snake_positionY.back() + 1));
+        snake_positionX.resize(snake_positionX.size() + 1, (snake_positionX.back()));
+    }
+    else if (arrow == 77) {
+        snake_positionX.resize(snake_positionX.size() + 1, (snake_positionX.back() + 1));
+        snake_positionY.resize(snake_positionY.size() + 1, (snake_positionY.back()));
+    }
+    else {
+        snake_positionX.resize(snake_positionX.size() + 1, (snake_positionX.back() - 1));
+        snake_positionY.resize(snake_positionY.size() + 1, (snake_positionY.back()));
+    }
+   // snake_positionY.resize(snake_positionY.size() + 1, (snake_positionY.back()+1));
     
+  
 }
 
 
 
-   Snake:: Snake(int snake_spead) :snake_spead(snake_spead) { snake_lenght.resize(1); }
+   Snake:: Snake(int snake_spead) :snake_spead(snake_spead) { snake_lenght+=1; }
 
    Snake:: ~Snake() {}
 
