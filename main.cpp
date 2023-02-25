@@ -64,7 +64,7 @@ void Arrow_Path(int& path_status);
 
             integer_for_move = pool.Pool_move(snake, path_status,apple);
          
-          // pool.Pool_print();
+           pool.Pool_print();
 
         }
     }
@@ -87,13 +87,13 @@ void Arrow_Path(int& path_status);
     void Arrow_Path(int & path_status) {
 
         auto start_time = std::chrono::steady_clock::now();
-        while (std::chrono::steady_clock::now() - start_time < std::chrono::milliseconds(10)) {
+        while (std::chrono::steady_clock::now() - start_time < std::chrono::milliseconds(100)) {
             if (_kbhit()) {
                 _getch();
                 path_status = _getch();
             }
 
         }
-        path_status = 77;
+       
 
     }

@@ -166,52 +166,66 @@
                    if (past_path == 80) { 
                        arrow_path = 80; 
                    deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                   snake.snake_positionY.back() += 1;
+                   for (auto size : snake.snake_lenght) {
+                       snake.snake_positionY[size] += 1;
+                   }
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       snake.snake_positionY.back() -= 1;
-
+                       for (auto size : snake.snake_lenght) {
+                           snake.snake_positionY[size] -= 1;
+                       }
                        break;
                    }
                case 80:  // Down arrow
-                   if (past_path == 72) { 
+                   if (past_path == 72) {
                        arrow_path = 72;
-                   deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                   snake.snake_positionY.back() -= 1;
+                       deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                       for (auto size : snake.snake_lenght) {
+                           snake.snake_positionY[size] -= 1;
+                       }
+                   
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       snake.snake_positionY.back() += 1;
+                       for (auto size : snake.snake_lenght) {
+                           snake.snake_positionY[size] += 1;
+                       }
 
                        break;
                    }
                case 77:  // Right arrow
-                   if (past_path == 75) { 
-                       arrow_path = 75; 
-                   deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                   snake.snake_positionX.back() -= 1;
+                   if (past_path == 75) {
+                       arrow_path = 75;
+                       deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
+                       for (auto size : snake.snake_lenght) {
+                       snake.snake_positionX[size] -= 1;
+                   }
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       snake.snake_positionX.back() += 1;
-
+                       for (auto size : snake.snake_lenght) {
+                           snake.snake_positionX[size] += 1;
+                       }
                        break;
                    }
                case 75:  // Left arrow
                    if (past_path == 77) { 
                        arrow_path = 77; 
                    deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                   snake.snake_positionX.back() += 1;
+                   for (auto size : snake.snake_lenght) {
+                       snake.snake_positionX[size] += 1;
+                   }
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       snake.snake_positionX.back() -= 1;
-
+                       for (auto size : snake.snake_lenght) {
+                           snake.snake_positionX[size] -= 1;
+                       }
                        break;
                    }
                }

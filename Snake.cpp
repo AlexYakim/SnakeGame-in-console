@@ -9,8 +9,7 @@ void Snake::Snake_lenght_resize() {
     
     snake_positionX.resize(snake_positionX.size() + 1);
     snake_positionY.resize(snake_positionY.size() + 1);
-    snake_positionX.at(snake_positionX.front())= snake_positionX.back() - 1;
-    snake_positionY.at(snake_positionY.front() - 1)= snake_positionY.back() - 1;;
+    
 }
 
 
