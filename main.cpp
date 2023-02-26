@@ -53,9 +53,10 @@ void Arrow_Path(int& path_status);
         int path_status;
 
         pool.Set_snake(snake);
+        pool.Set_apple_position(apple, pool);
 
         pool.Pool_print();
-        pool.Set_apple_position(apple,pool);
+       
         
 
         while (integer_for_move) {

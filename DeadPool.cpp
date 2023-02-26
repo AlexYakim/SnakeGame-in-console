@@ -166,70 +166,69 @@
                    if (past_path == 80) { 
                        arrow_path = 80; 
                    deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                   for (auto size = 0; size < snake.snake_lenght; size++) {
-                       snake.snake_positionY[size] += 1;
-                   }
+                  
+                   snake.snake_positionY. back() = snake.snake_positionY.back()+1;
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size = 0; size < snake.snake_lenght; size++) {
-                           snake.snake_positionY[size] -= 1;
-                       }
+                      
+                       snake.snake_positionY.back() = snake.snake_positionY.back() -1;
                        break;
                    }
                case 80:  // Down arrow
                    if (past_path == 72) {
                        arrow_path = 72;
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size = 0; size < snake.snake_lenght; size++) {
-                           snake.snake_positionY[size] -= 1;
-                       }
-                   
+                       
+                       snake.snake_positionY.back() = snake.snake_positionY.back() - 1;
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size = 0; size < snake.snake_lenght; size++) {
-                           snake.snake_positionY[size] += 1;
-                       }
-
+                      
+                       snake.snake_positionY.back() = snake.snake_positionY.back() + 1;
                        break;
                    }
                case 77:  // Right arrow
                    if (past_path == 75) {
                        arrow_path = 75;
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size = 0; size < snake.snake_lenght; size++) {
-                       snake.snake_positionX[size] -= 1;
-                   }
+                       
+                       snake.snake_positionX.back() = snake.snake_positionX.back() - 1;
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size = 0; size < snake.snake_lenght; size++) {
-                           snake.snake_positionX[size] += 1;
-                       }
+                      
+                       snake.snake_positionX.back() = snake.snake_positionX.back() + 1;
                        break;
                    }
                case 75:  // Left arrow
                    if (past_path == 77) { 
                        arrow_path = 77; 
                    deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                   for (auto size = 0; size < snake.snake_lenght; size++) {
-                       snake.snake_positionX[size] += 1;
-                   }
+                  
+                   snake.snake_positionX.back() = snake.snake_positionX.back() + 1;
                    break;
                    }
                    else {
                        deadpool_W_L[snake.snake_positionY.front()][snake.snake_positionX.front()] = ' ';
-                       for (auto size = 0; size < snake.snake_lenght; size++) {
-                           snake.snake_positionX[size] -= 1;
-                       }
+                      
+                       snake.snake_positionX.back() = snake.snake_positionX.back() - 1;
                        break;
                    }
                }
        past_path = arrow_path;
+
+
+      /* for (short size; size < snake.snake_lenght - 1; size++) {
+
+           snake.snake_positionX[size] = snake.snake_positionX[size + 1];
+           snake.snake_positionY[size] = snake.snake_positionY[size + 1];
+
+       }*/
+
 
        if (snake.snake_positionX.back() == apple.apple_location_X && snake.snake_positionY.back() == apple.apple_location_Y) {
 
