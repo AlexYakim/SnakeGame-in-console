@@ -222,12 +222,12 @@
        past_path = arrow_path;
 
 
-      /* for (short size; size < snake.snake_lenght - 1; size++) {
+       for (short size=0; size < snake.snake_lenght - 1; size++) {
 
            snake.snake_positionX[size] = snake.snake_positionX[size + 1];
            snake.snake_positionY[size] = snake.snake_positionY[size + 1];
 
-       }*/
+       }
 
 
        if (snake.snake_positionX.back() == apple.apple_location_X && snake.snake_positionY.back() == apple.apple_location_Y) {
