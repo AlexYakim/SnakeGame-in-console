@@ -17,7 +17,7 @@ class DeadPool {
 public:
 
 
-   Apple& Set_apple_position (Apple& apple, DeadPool& pool);
+  void Set_apple_position (Apple& apple, DeadPool& pool);
 
     int GetWeight();
     int GetLenght();
@@ -29,7 +29,7 @@ public:
 
     void Pool_set();
 
-    bool Pool_move(Snake& snake, int& arrow_path, Apple& apple);
+    bool Pool_move(Snake& snake, int& arrow_path, Apple& apple, DeadPool& pool);
 
     void Set_snake(Snake& snake); 
 private:
@@ -106,6 +106,7 @@ private:
     char apple_obj_form;
 public:
 
+    void Relocation(DeadPool& pool);
     char Get_obj_form();
     int Get_apple_location_X();
     int Get_apple_location_Y();

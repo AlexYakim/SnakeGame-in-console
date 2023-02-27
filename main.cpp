@@ -4,7 +4,7 @@
 
 
 
-void Game(DeadPool& pool, Snake& snake,Apple& apple);
+void Game(DeadPool& pool, Snake& snake);
 void Arrow_Path(int& path_status);
 
    
@@ -20,10 +20,10 @@ void Arrow_Path(int& path_status);
     int main() {
        
         DeadPool pool(15,20);
-        pool.Pool_set();
-        Apple apple(pool);
+        
+        
         Snake snake1(1);
-        Game(pool, snake1, apple);
+        Game(pool, snake1);
        
       
         return 0;
@@ -48,10 +48,12 @@ void Arrow_Path(int& path_status);
 
 
 
-    void Game(DeadPool& pool, Snake& snake, Apple& apple) {
+    void Game(DeadPool& pool, Snake& snake) {
         bool integer_for_move = 1;
         int path_status;
+        Apple apple(pool);
 
+        pool.Pool_set();
         pool.Set_snake(snake);
         pool.Set_apple_position(apple, pool);
 
@@ -63,7 +65,7 @@ void Arrow_Path(int& path_status);
              Arrow_Path(path_status);
          
 
-            integer_for_move = pool.Pool_move(snake, path_status,apple);
+            integer_for_move = pool.Pool_move(snake, path_status,apple,pool);
          
            pool.Pool_print();
 

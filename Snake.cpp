@@ -23,7 +23,7 @@ void Snake::Snake_lenght_resize(int arrow) {
         snake_positionX.resize(snake_positionX.size() + 1, (snake_positionX.back() - 1));
         snake_positionY.resize(snake_positionY.size() + 1, (snake_positionY.back()));
     }
-   // snake_positionY.resize(snake_positionY.size() + 1, (snake_positionY.back()+1));
+   
     
   
 }
