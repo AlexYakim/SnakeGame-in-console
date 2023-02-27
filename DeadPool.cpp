@@ -140,10 +140,13 @@
            bool spawn=true;
 
            while (spawn) {
-
-               if (deadpool_W_L[apple.Get_apple_location_Y()][apple.Get_apple_location_X()] == ' ') { spawn = false; }
+               apple.Relocation(pool);
+               if (deadpool_W_L[apple.Get_apple_location_Y()][apple.Get_apple_location_X()] == ' ') { 
+                   deadpool_W_L[apple.Get_apple_location_Y()][apple.Get_apple_location_X()] = apple.Get_obj_form();
+               spawn = false; 
+               }
                else {
-                   spawn = false;
+                   spawn = true;
                }
            }
            
@@ -262,17 +265,17 @@
           
           
            apple.Relocation(pool);
-
+           Set_apple_position(apple, pool);
 
        }
 
-       Set_apple_position(apple, pool);
+       
 
        Set_snake(snake);
 
       
             
-       std::this_thread::sleep_for(std::chrono::milliseconds(snake.snake_spead * 100));
+       std::this_thread::sleep_for(std::chrono::milliseconds(snake.snake_spead * 400));
 
        return true;
    }
