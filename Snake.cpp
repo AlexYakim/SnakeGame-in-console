@@ -28,7 +28,16 @@ void Snake::Snake_lenght_resize(int arrow) {
   
 }
 
+Snake& Snake:: operator= (Snake& snake1) {
 
+    snake_lenght = snake1.snake_lenght;
+    snake_spead = snake1.snake_spead;
+    snake_positionX.clear();
+    snake_positionX = snake1.snake_positionX;
+    snake_positionY.clear();
+    snake_positionY = snake1.snake_positionY;
+    return snake1;
+}
 
    Snake:: Snake(int snake_spead) :snake_spead(snake_spead) { snake_lenght+=1; }
 

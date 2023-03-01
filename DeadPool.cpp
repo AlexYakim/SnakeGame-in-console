@@ -1,13 +1,19 @@
 
 #include "Stack_of_class_for_Game.h"
 
-
+short DeadPool::score = 0;
     DeadPool::DeadPool(int weight , int lenght ) :pool_weight(weight), pool_lenght(lenght)
     {
+       
         past_path = 0;
         for (short i = 0; i < pool_weight; i++) {
             deadpool_W_L[i] = new char[pool_lenght];
         }
+
+    }
+
+    void  DeadPool::Score_result() {
+      score += 1;
 
     }
 
@@ -56,7 +62,9 @@
             std::cout << std::endl;
 
         }
+        std::cout << std::endl;
 
+        std::cout << "====================YOURS SCORE - " << score << " - ====================" << std::endl;
 
     }
 
@@ -114,14 +122,14 @@
 
 
    int DeadPool::GetWeight(){
-       return pool_weight-1;
+       return pool_weight;
    }
   
    
    
    int DeadPool:: GetLenght() {
 
-       return pool_lenght-1;
+       return pool_lenght;
 
 
    }
@@ -165,7 +173,16 @@
            return false;
 
        }
-       
+       for (short snake_element = 0 ; snake_element < snake.snake_lenght-1;snake_element++) {
+
+           if (snake.snake_positionX.back() == snake.snake_positionX[snake_element] && snake.snake_positionY.back() == snake.snake_positionY[snake_element]&& snake.snake_lenght>1) {
+               deadpool_W_L[snake.snake_positionY.back()][snake.snake_positionX.back()] = '@';
+               return false;
+
+           }
+           
+
+       }
       
 
      
@@ -265,6 +282,9 @@
           
           
            apple.Relocation(pool);
+          
+               Score_result();
+           
            Set_apple_position(apple, pool);
 
        }
@@ -275,10 +295,17 @@
 
       
             
-       std::this_thread::sleep_for(std::chrono::milliseconds(snake.snake_spead * 400));
+       std::this_thread::sleep_for(std::chrono::milliseconds(snake.snake_spead * 100));
 
        return true;
    }
 
-  
+   DeadPool& DeadPool:: operator=(DeadPool&pool1) {
 
+       score = 0;
+       past_path =0;
+       pool_lenght = pool1.pool_lenght;
+       pool_weight = pool1.pool_weight;
+
+       return pool1;
+   }

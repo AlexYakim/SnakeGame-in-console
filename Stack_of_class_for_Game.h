@@ -5,18 +5,22 @@
 #include<thread>
 #include"conio.h"
 #include<vector>
-
+#include <random>
 
 class Apple;
 class DeadPool;
 class Snake;
+
+
 
 class DeadPool {
 
     
 public:
 
-
+   
+    
+    void Score_result();
   void Set_apple_position (Apple& apple, DeadPool& pool);
 
     int GetWeight();
@@ -31,14 +35,19 @@ public:
 
     bool Pool_move(Snake& snake, int& arrow_path, Apple& apple, DeadPool& pool);
 
-    void Set_snake(Snake& snake); 
+    void Set_snake(Snake& snake);
+
+    DeadPool& operator=(DeadPool&);
 private:
   
+    static short score;
     int past_path;
     int pool_weight;
     int pool_lenght;
 
     char** deadpool_W_L = new char* [pool_weight];
+
+
 
     friend Apple;
    
@@ -63,7 +72,7 @@ class Snake {
 
 public:
 
-    int snake_lenght;
+    int snake_lenght=0;
 
 
     int snake_spead;
@@ -73,7 +82,7 @@ public:
     std::vector<int> snake_positionY = { 1 };
 
 
-
+    Snake& operator= (Snake& snake1);
     void Snake_lenght_resize(int arrow);
 
 
@@ -85,7 +94,7 @@ public:
 
 };
 
-
+ 
 
 
 

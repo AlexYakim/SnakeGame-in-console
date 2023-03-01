@@ -11,8 +11,8 @@ Apple::Apple(DeadPool& pool) {
     apple_obj_form = apple_form[getRandomNumber(0,8)];
 
 
-   apple_location_X = getRandomNumber(1, pool.GetLenght());
-   apple_location_Y = getRandomNumber(1, pool.GetWeight());
+   apple_location_X = getRandomNumber(2, (pool.GetLenght())-3 );
+   apple_location_Y = getRandomNumber(2, (pool.GetWeight())-3 );
 
     
 
@@ -26,8 +26,8 @@ void Apple::Relocation(DeadPool& pool) {
     apple_obj_form = apple_form[getRandomNumber(0, 8)];
 
 
-    apple_location_X = getRandomNumber(1, pool.GetLenght());
-    apple_location_Y = getRandomNumber(1, pool.GetWeight());
+    apple_location_X = getRandomNumber(2, (pool.GetLenght()-3));
+    apple_location_Y = getRandomNumber(2, (pool.GetWeight()-3));
 
 
 }
@@ -55,8 +55,9 @@ char Apple:: Get_obj_form() {
 
 int getRandomNumber(int min, int max)
 {
-    rand();
-    static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
-    // Равномерно распределяем рандомное число в нашем диапазоне
-    return static_cast<int>(rand() * fraction * (max - min + 1) + min);
+        std::random_device rd;
+        std::mt19937 mersene(rd());
+        std::uniform_int_distribution<int> dis(min, max);
+        return dis(mersene);
+   
 }
