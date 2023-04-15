@@ -17,7 +17,7 @@ The following dependencies are required to build and run the SnakeGame:
 
 | Dependency | Version |
 |------------|---------|
-| Windows SDK | 10.0    |
+| Windows SDK | 1.0.0    |
 | Visual Studio Compiler | 2022 |
 | Build Tools | v143 |
 
